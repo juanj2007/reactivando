@@ -20,6 +20,8 @@ public class ReactivandoApplication {
                 String jdbcUrl = "jdbc:postgresql://" + host + ":" + port + path;
                 System.setProperty("spring.datasource.url", jdbcUrl);
                 System.setProperty("spring.datasource.driver-class-name", "org.postgresql.Driver");
+                System.setProperty("spring.jpa.database-platform", "org.hibernate.dialect.PostgreSQLDialect");
+                System.setProperty("spring.jpa.properties.hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
 
                 if (uri.getUserInfo() != null) {
                     String[] userInfo = uri.getUserInfo().split(":");
