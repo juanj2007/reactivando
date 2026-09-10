@@ -33,9 +33,12 @@ public class ReactivandoApplication {
                     Map<String, Object> props = new HashMap<>();
                     props.put("spring.datasource.url", jdbcUrl);
                     props.put("SPRING_DATASOURCE_URL", jdbcUrl);
+                    props.put("jakarta.persistence.jdbc.url", jdbcUrl);
                     props.put("spring.datasource.driver-class-name", "org.postgresql.Driver");
+                    props.put("spring.jpa.database", "POSTGRESQL");
                     props.put("spring.jpa.database-platform", "org.hibernate.dialect.PostgreSQLDialect");
                     props.put("spring.jpa.properties.hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+                    props.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
 
                     if (uri.getUserInfo() != null) {
                         String[] userInfo = uri.getUserInfo().split(":");
