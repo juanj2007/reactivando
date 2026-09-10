@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+**/dist/
+target/
+**/target/
+
+# Database / local data
+mysql-data/
+
+# Environment variables & secrets
+.env
+*.env
+**/.env
+
+# IDE & OS files
+.vscode/
+.idea/
+*.swp
+*.DS_Store
+Thumbs.db
