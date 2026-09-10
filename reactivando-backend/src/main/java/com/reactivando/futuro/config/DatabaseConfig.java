@@ -23,7 +23,9 @@ public class DatabaseConfig {
             dbUrl = System.getenv("DATABASE_URL");
         }
 
-        // Si estamos en entorno Render (DATABASE_URL presente)
+        String renderEnv = System.getenv("RENDER"); // Render inyecta RENDER=true automáticamente en todos sus entornos
+
+        // 1. Intentar PostgreSQL de Render si DATABASE_URL está presente
         if (dbUrl != null && !dbUrl.trim().isEmpty()) {
             try {
                 String cleanUrl = dbUrl.replace("postgres://", "http://").replace("postgresql://", "http://");
@@ -54,33 +56,49 @@ public class DatabaseConfig {
                     config.setDriverClassName("org.postgresql.Driver");
                     return new HikariDataSource(config);
                 } catch (Exception e) {
-                    System.out.println("=== [Render] Falló conexión a PostgreSQL (" + e.getMessage() + "). Cambiando automáticamente a H2 en memoria ===");
+                    System.out.println("=== [Render] Falló conexión a PostgreSQL (" + e.getMessage() + ") ===");
                 }
             } catch (Exception e) {
-                System.out.println("=== [Render] Error procesando DATABASE_URL: " + e.getMessage() + ". Cambiando a H2 en memoria ===");
+                System.out.println("=== [Render] Error procesando DATABASE_URL: " + e.getMessage() + " ===");
             }
+        }
 
-            // Fallback garantizado a H2 para Render
-            System.out.println("=== [Render] Creando DataSource H2 en memoria ===");
+        // 2. Si estamos en Render o en entorno Cloud (RENDER=true o DATABASE_URL presente que falló) -> Usar H2 en memoria de forma obligatoria
+        if ((renderEnv != null && !renderEnv.trim().isEmpty()) || (dbUrl != null && !dbUrl.trim().isEmpty())) {
+            System.out.println("=== [Render / Cloud] Creando DataSource H2 en memoria garantizado ===");
             HikariConfig h2Config = new HikariConfig();
             h2Config.setJdbcUrl("jdbc:h2:mem:reactivandodb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=PostgreSQL");
             h2Config.setDriverClassName("org.h2.Driver");
             h2Config.setUsername("sa");
             h2Config.setPassword("");
+            h2Config.setInitializationFailTimeout(-1);
             return new HikariDataSource(h2Config);
         }
 
-        // Ejecución Local (XAMPP / MySQL)
-        System.out.println("=== [Local] Configurando DataSource MySQL Local ===");
+        // 3. Entorno Local (XAMPP / MySQL)
+        System.out.println("=== [Local] Probando conexión a MySQL Local ===");
         String localUrl = env.getProperty("spring.datasource.url", "jdbc:mysql://localhost:3306/reactivando?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true");
         String localUser = env.getProperty("spring.datasource.username", "root");
         String localPass = env.getProperty("spring.datasource.password", "");
 
-        HikariConfig localConfig = new HikariConfig();
-        localConfig.setJdbcUrl(localUrl);
-        localConfig.setUsername(localUser);
-        localConfig.setPassword(localPass);
-        localConfig.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        return new HikariDataSource(localConfig);
+        DriverManager.setLoginTimeout(3);
+        try (Connection conn = DriverManager.getConnection(localUrl, localUser, localPass)) {
+            System.out.println("=== [Local] Conexión a MySQL Local EXITOSA ===");
+            HikariConfig localConfig = new HikariConfig();
+            localConfig.setJdbcUrl(localUrl);
+            localConfig.setUsername(localUser);
+            localConfig.setPassword(localPass);
+            localConfig.setDriverClassName("com.mysql.cj.jdbc.Driver");
+            return new HikariDataSource(localConfig);
+        } catch (Exception e) {
+            System.out.println("=== [Local] MySQL no responde (" + e.getMessage() + "). Usando H2 en memoria como respaldo local ===");
+            HikariConfig h2Config = new HikariConfig();
+            h2Config.setJdbcUrl("jdbc:h2:mem:reactivandodb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=PostgreSQL");
+            h2Config.setDriverClassName("org.h2.Driver");
+            h2Config.setUsername("sa");
+            h2Config.setPassword("");
+            h2Config.setInitializationFailTimeout(-1);
+            return new HikariDataSource(h2Config);
+        }
     }
 }
