@@ -43,12 +43,23 @@ public class ReactivandoApplication {
                     if (uri.getUserInfo() != null) {
                         String[] userInfo = uri.getUserInfo().split(":");
                         if (userInfo.length > 0) {
-                            props.put("spring.datasource.username", userInfo[0]);
+                            String user = userInfo[0];
+                            props.put("spring.datasource.username", user);
+                            props.put("SPRING_DATASOURCE_USERNAME", user);
+                            props.put("DB_USERNAME", user);
+                            props.put("jakarta.persistence.jdbc.user", user);
+                            System.setProperty("spring.datasource.username", user);
                         }
                         if (userInfo.length > 1) {
-                            props.put("spring.datasource.password", userInfo[1]);
+                            String pass = userInfo[1];
+                            props.put("spring.datasource.password", pass);
+                            props.put("SPRING_DATASOURCE_PASSWORD", pass);
+                            props.put("DB_PASSWORD", pass);
+                            props.put("jakarta.persistence.jdbc.password", pass);
+                            System.setProperty("spring.datasource.password", pass);
                         }
                     }
+                    System.setProperty("spring.datasource.url", jdbcUrl);
 
                     env.getPropertySources().addFirst(new MapPropertySource("renderPostgresConfig", props));
                 } catch (Exception e) {
