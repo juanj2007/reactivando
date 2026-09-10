@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<meta charset='utf-8'>
+<title>Manual de Usuario - Reactivando el Futuro</title>
+<style>
+  @page {
+    size: 8.5in 11in;
+    margin: 1in 1in 1in 1in;
+  }
+  body {
+    font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #222222;
+  }
+  h1 {
+    font-size: 24pt;
+    color: #1a365d;
+    border-bottom: 2px solid #2b6cb0;
+    padding-bottom: 5px;
+    margin-top: 20pt;
+  }
+  h2 {
+    font-size: 16pt;
+    color: #2b6cb0;
+    margin-top: 15pt;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 3px;
+  }
+  h3 {
+    font-size: 13pt;
+    color: #2d3748;
+    margin-top: 12pt;
+  }
+  p, li {
+    font-size: 11pt;
+    margin-bottom: 8pt;
+  }
+  .cover {
+    text-align: center;
+    padding-top: 100pt;
+    padding-bottom: 150pt;
+  }
+  .cover-title {
+    font-size: 32pt;
+    font-weight: bold;
+    color: #1a365d;
+    margin-bottom: 15pt;
+  }
+  .cover-subtitle {
+    font-size: 18pt;
+    color: #4a5568;
+    margin-bottom: 40pt;
+  }
+  .cover-meta {
+    font-size: 12pt;
+    color: #718096;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10pt;
+    margin-bottom: 15pt;
+  }
+  th {
+    background-color: #2b6cb0;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 8pt;
+    border: 1px solid #2b6cb0;
+    text-align: left;
+  }
+  td {
+    padding: 7pt;
+    border: 1px solid #cbd5e0;
+  }
+  tr:nth-child(even) {
+    background-color: #f7fafc;
+  }
+  .alert-box {
+    background-color: #ebf8ff;
+    border-left: 4px solid #3182ce;
+    padding: 10pt;
+    margin: 10pt 0;
+    font-size: 10.5pt;
+  }
+  .badge {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 9pt;
+    font-weight: bold;
+    color: white;
+    border-radius: 3px;
+  }
+  .badge-admin { background-color: #e53e3e; }
+  .badge-empresa { background-color: #dd6b20; }
+  .badge-candidato { background-color: #3182ce; }
+  .page-break {
+    page-break-before: always;
+  }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="cover">
+  <div class="cover-title">MANUAL DE USUARIO</div>
+  <div class="cover-subtitle">Plataforma de Intermediación Laboral<br><strong>"Reactivando el Futuro"</strong></div>
+  <hr style="width: 50%; border: 1px solid #2b6cb0; margin: 30pt auto;">
+  <div class="cover-meta">
+    <p><strong>Sistema Académico de Gestión Laboral e Inteligencia de Recomendación</strong></p>
+    <p>Tecnologías: Spring Boot 3 + React 18 + MySQL 8.0</p>
+    <p>Versión del Documento: 1.0 (2026)</p>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ÍNDICE Y INTRODUCCIÓN -->
+<h1>1. Introducción y Objetivos del Sistema</h1>
+<p>El presente manual de usuario tiene como objetivo proporcionar una guía detallada, clara y estructurada para el uso de la plataforma web de intermediación laboral <strong>Reactivando el Futuro</strong>.</p>
+<p>La plataforma conecta a tres tipos principales de usuarios en un ecosistema optimizado:</p>
+<ul>
+  <li><span class="badge badge-candidato">CANDIDATO</span> <strong>Candidatos:</strong> Personas que buscan oportunidades laborales, gestionan su perfil profesional, reciben recomendaciones inteligentes basadas en Inteligencia de Recomendación y se postulan a vacantes de empleo.</li>
+  <li><span class="badge badge-empresa">EMPRESA</span> <strong>Empresas:</strong> Empleadores que publican ofertas de trabajo, gestionan su ubicación geográfica mediante Google Maps y evalúan las postulaciones de los candidatos.</li>
+  <li><span class="badge badge-admin">ADMINISTRADOR</span> <strong>Administradores:</strong> Encargados de supervisar el correcto funcionamiento de la plataforma, gestionar usuarios y consultar la auditoría de eventos.</li>
+</ul>
+
+<div class="alert-box">
+  <strong>Nota de Seguridad:</strong> El sistema utiliza autenticación stateless basada en <strong>Tokens JWT (JSON Web Tokens)</strong> y encriptación de contraseñas con el algoritmo <strong>BCrypt</strong>.
+</div>
+
+---
+
+<h1>2. Credenciales de Prueba Predeterminadas</h1>
+<p>Para facilitar el acceso y evaluación del sistema, la plataforma cuenta con usuarios de prueba pre-cargados:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rol de Usuario</th>
+      <th>Correo Electrónico</th>
+      <th>Contraseña</th>
+      <th>Acceso a Dashboard</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="badge badge-admin">ADMINISTRADOR</span></td>
+      <td>admin@reactivando.com</td>
+      <td>admin123</td>
+      <td>/admin/dashboard</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-empresa">EMPRESA</span></td>
+      <td>empresa@tech.com</td>
+      <td>empresa123</td>
+      <td>/empresa/dashboard</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-candidato">CANDIDATO</span></td>
+      <td>candidato@correo.com</td>
+      <td>candidato123</td>
+      <td>/candidato/dashboard</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+<div class="page-break"></div>
+
+<h1>3. Módulo de Autenticación y Registro</h1>
+
+<h2>3.1 Registro de Nuevos Usuarios</h2>
+<ol>
+  <li>En la página principal de la aplicación, haga clic en el botón <strong>"Registrarse"</strong> en el menú superior.</li>
+  <li>Seleccione el <strong>Rol</strong> con el que desea registrarse: <em>Candidato</em> o <em>Empresa</em>.</li>
+  <li>Diligencie el formulario con sus datos básicos (Nombre, Apellido, Correo Electrónico, Teléfono y Contraseña).</li>
+  <li>Haga clic en el botón <strong>"Crear Cuenta"</strong>. El sistema validará que el correo no se encuentre registrado previamente.</li>
+</ol>
+
+<h2>3.2 Inicio de Sesión (Login)</h2>
+<ol>
+  <li>Haga clic en <strong>"Iniciar Sesión"</strong>.</li>
+  <li>Ingrese su correo electrónico y contraseña.</li>
+  <li>Haga clic en <strong>"Ingresar"</strong>. El sistema generará el Token de seguridad JWT y lo redirigirá automáticamente al Dashboard correspondiente a su rol.</li>
+</ol>
+
+---
+
+<div class="page-break"></div>
+
+<h1>4. Módulo para Candidatos</h1>
+
+<h2>4.1 Gestión del Perfil Profesional</h2>
+<p>Desde el panel principal del candidato, este puede ingresar y actualizar la información de su hoja de vida:</p>
+<ul>
+  <li>Nivel educativo (Bachiller, Técnico, Tecnólogo, Profesional, Posgrado).</li>
+  <li>Ocupación o cargo deseado.</li>
+  <li>Ciudad de residencia y dirección.</li>
+  <li>Años de experiencia laboral.</li>
+  <li>Habilidades clave separadas por comas (ej. <em>Java, React, SQL, HTML</em>).</li>
+</ul>
+
+<h2>4.2 Motor Inteligente de Recomendaciones (Match %)</h2>
+<p>El sistema cuenta con un algoritmo de coincidencia automática que calcula el porcentaje de afinidad entre el perfil del candidato y las vacantes disponibles:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Criterio de Coincidencia</th>
+      <th>Peso Porcentual</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ciudad de Residencia</td>
+      <td>25%</td>
+      <td>Coincidencia exacta entre la ciudad del candidato y la ubicación de la vacante.</td>
+    </tr>
+    <tr>
+      <td>Nivel de Estudio</td>
+      <td>25%</td>
+      <td>Afinidad con el nivel educativo requerido por la oferta.</td>
+    </tr>
+    <tr>
+      <td>Ocupación</td>
+      <td>20%</td>
+      <td>Coincidencia con el cargo o profesión del candidato.</td>
+    </tr>
+    <tr>
+      <td>Habilidades Técnicas</td>
+      <td>30%</td>
+      <td>Coincidencia cruzada entre las habilidades del candidato y los requisitos.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>4.3 Postulación a Ofertas y Generación de PDF</h2>
+<ol>
+  <li>Explore las vacantes publicadas en la pestaña <strong>"Buscar Ofertas"</strong>.</li>
+  <li>Haga clic en una oferta para ver sus detalles completos, requisitos y salario.</li>
+  <li>Haga clic en <strong>"Postularme"</strong>. El sistema confirmará su registro y prevendrá postulaciones duplicadas.</li>
+  <li>En la sección <strong>"Mis Postulaciones"</strong> podrá ver el estado actual de sus solicitudes (PENDIENTE, EN REVISIÓN, ACEPTADA, RECHAZADA) y descargar un <strong>comprobante en formato PDF</strong>.</li>
+</ol>
+
+---
+
+<div class="page-break"></div>
+
+<h1>5. Módulo para Empresas</h1>
+
+<h2>5.1 Perfil Empresarial y Ubicación en Google Maps</h2>
+<p>Las empresas pueden gestionar la información de su organización:</p>
+<ul>
+  <li>Nombre comercial y NIT de la empresa.</li>
+  <li>Sector económico, teléfono y correo corporativo.</li>
+  <li>Sitio web oficial.</li>
+  <li><strong>Coordenadas GPS (Latitud y Longitud):</strong> Permite visualizar en un mapa interactivo de Google Maps la ubicación de las sedes de la empresa para orientación de los candidatos.</li>
+</ul>
+
+<h2>5.2 Publicación y Administración de Vacantes</h2>
+<ol>
+  <li>En el Dashboard de la Empresa, haga clic en <strong>"Nueva Vacante"</strong>.</li>
+  <li>Ingrese el Título de la oferta, Descripción, Requisitos, Salario, Ciudad, Tipo de Contrato y Número de Vacantes.</li>
+  <li>Haga clic en <strong>"Publicar Oferta"</strong>.</li>
+  <li>Podrá cambiar el estado de la oferta en cualquier momento entre <strong>ACTIVA</strong>, <strong>PAUSADA</strong> o <strong>CERRADA</strong>.</li>
+</ol>
+
+<h2>5.3 Selección y Evaluación de Postulantes</h2>
+<ol>
+  <li>En la sección <strong>"Postulaciones Recibidas"</strong>, la empresa verá la lista de candidatos que han aplicado a sus vacantes.</li>
+  <li>La empresa puede revisar la hoja de vida y habilidades del candidato.</li>
+  <li>Puede cambiar el estado a <strong>EN_REVISION</strong>, <strong>ACEPTADA</strong> o <strong>RECHAZADA</strong> e incluir observaciones técnicas.</li>
+</ol>
+
+---
+
+<div class="page-break"></div>
+
+<h1>6. Módulo de Administración y Auditoría</h1>
+
+<h2>6.1 Dashboard del Administrador</h2>
+<p>El Administrador tiene una vista consolidada de la plataforma:</p>
+<ul>
+  <li>Total de usuarios registrados (Candidatos y Empresas).</li>
+  <li>Total de vacantes activas y postulaciones realizadas.</li>
+  <li>Habilitación y deshabilitación de cuentas de usuario.</li>
+</ul>
+
+<h2>6.2 Registro de Trazabilidad y Log de Auditoría</h2>
+<p>El sistema cuenta con un módulo de auditoría automatizado que registra eventos clave:</p>
+<ul>
+  <li>Registros de nuevos usuarios y cierres/inicios de sesión.</li>
+  <li>Publicación y modificación de ofertas de empleo.</li>
+  <li>Postulaciones realizadas por los candidatos.</li>
+  <li>Dirección IP de origen y marca de tiempo (Timestamp) de cada evento.</li>
+</ul>
+
+---
+
+<h1>7. Preguntas Frecuentes y Soporte</h1>
+<div class="alert-box">
+  <strong>¿Qué hago si no puedo iniciar sesión?</strong><br>
+  Verifique que su correo y contraseña coincidan con las credenciales registradas. Recuerde que si ingresa datos erróneos el sistema bloqueará la petición con un mensaje de error claro.
+</div>
+
+<div class="alert-box">
+  <strong>¿Puedo postularme dos veces a la misma vacante?</strong><br>
+  No. La base de datos cuenta con una restricción única por candidato y vacante para garantizar la integridad del proceso de selección.
+</div>
+
+</body>
+</html>
