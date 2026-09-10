@@ -63,7 +63,11 @@ public class ReactivandoApplication {
 
                     env.getPropertySources().addFirst(new MapPropertySource("renderPostgresConfig", props));
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Map<String, Object> fallbackProps = new HashMap<>();
+                    fallbackProps.put("spring.datasource.url", "jdbc:h2:mem:reactivandodb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL");
+                    fallbackProps.put("spring.datasource.driver-class-name", "org.h2.Driver");
+                    fallbackProps.put("spring.jpa.database-platform", "org.hibernate.dialect.H2Dialect");
+                    env.getPropertySources().addFirst(new MapPropertySource("renderH2Config", fallbackProps));
                 }
             }
         });
