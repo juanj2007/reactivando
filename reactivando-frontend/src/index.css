@@ -1,0 +1,246 @@
+/* =============================================================================
+   SISTEMA DE ESTILOS PREMIUM — REACTIVANDO EL FUTURO
+   ============================================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #0a192f;
+  --primary-hover: #030c1a;
+  --primary-light: #e0f2fe;
+  --secondary: #10b981;
+  --secondary-hover: #059669;
+  --secondary-light: #d1fae5;
+  --accent-cyan: #06b6d4;
+  --dark: #020617;
+  --gray-900: #0f172a;
+  --gray-800: #1e293b;
+  --gray-700: #334155;
+  --gray-500: #64748b;
+  --gray-300: #cbd5e1;
+  --gray-200: #e2e8f0;
+  --gray-100: #f1f5f9;
+  --gray-50: #f8fafc;
+  --white: #ffffff;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --success: #10b981;
+
+  --shadow-sm: 0 2px 4px 0 rgba(10, 25, 47, 0.04);
+  --shadow-md: 0 8px 16px -2px rgba(10, 25, 47, 0.08), 0 4px 6px -2px rgba(10, 25, 47, 0.04);
+  --shadow-lg: 0 20px 30px -6px rgba(10, 25, 47, 0.12), 0 10px 15px -5px rgba(10, 25, 47, 0.08);
+  --shadow-glow: 0 0 25px rgba(16, 185, 129, 0.25);
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 2rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #f1f5f9;
+  color: var(--gray-900);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Tipografía */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+a:hover {
+  color: var(--secondary);
+}
+
+/* Botones Premium con Gradientes */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.65rem;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(10, 25, 47, 0.08);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #0a192f 0%, #1e3a8a 100%);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #030c1a 0%, #0a192f 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(10, 25, 47, 0.3);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: var(--white);
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(16, 185, 129, 0.35);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid #cbd5e1;
+  color: var(--gray-800);
+}
+
+.btn-outline:hover {
+  background-color: #f8fafc;
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: var(--white);
+}
+
+.btn-danger:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.3);
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Tarjetas Premium Elevadas */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid #e2e8f0;
+  box-shadow: var(--shadow-sm);
+  padding: 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  border-color: #cbd5e1;
+}
+
+/* Badges Modernos */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.95rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.badge-success { background-color: #d1fae5; color: #047857; border: 1px solid #6ee7b7; }
+.badge-warning { background-color: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+.badge-danger { background-color: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+.badge-info { background-color: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; }
+
+/* Formularios */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: 800;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 0.85rem 1.15rem;
+  font-size: 0.975rem;
+  border: 2px solid #cbd5e1;
+  border-radius: var(--radius-md);
+  background-color: var(--white);
+  color: var(--gray-900);
+  outline: none;
+  transition: all 0.2s ease-in-out;
+  font-family: inherit;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.18);
+  background-color: #ffffff;
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Spinner / Loader */
+.spinner {
+  width: 3rem;
+  height: 3rem;
+  border: 4px solid var(--gray-200);
+  border-top-color: var(--secondary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 2.5rem auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Layout Principal */
+.main-content {
+  flex: 1;
+  padding: 3rem 0;
+}
