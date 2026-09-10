@@ -21,8 +21,9 @@ services:
         value: ReactivandoElFuturoSecretKeySena2026SuperSeguraConMasDe256Bits!
 
   # Frontend React Static Site
-  - type: static
+  - type: web
     name: reactivando-frontend
+    env: static
     rootDir: reactivando-frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
