@@ -1,0 +1,2 @@
+-- Archivo data.sql para inicialización de datos opcionales
+-- Se poblará con datos semilla en fases posteriores
