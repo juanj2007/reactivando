@@ -1,9 +1,8 @@
 import axios from 'axios';
 
-// Utiliza la ruta relativa '/api'.
-// En desarrollo: Vite proxy redirige a http://localhost:8080
-// En producción: Vercel rewrite proxy (vercel.json) redirige automáticamente a https://reactivando.onrender.com/api
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
+// URL del backend: En producción apunta directamente al servidor Render de la nube
+const RENDER_BACKEND_URL = 'https://reactivando.onrender.com/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || (import.meta.env.DEV ? '/api' : RENDER_BACKEND_URL);
 
 const api = axios.create({
   baseURL: API_BASE_URL,
