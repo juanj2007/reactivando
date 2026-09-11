@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
@@ -25,9 +26,14 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 
+        String message = "No autorizado: Acceso denegado. Se requiere un token JWT válido.";
+        if (authException instanceof BadCredentialsException) {
+            message = "Correo electrónico o contraseña incorrectos. Verifique sus datos.";
+        }
+
         ErrorDetails errorDetails = ErrorDetails.builder()
                 .status(HttpStatus.UNAUTHORIZED.value())
-                .message("No autorizado: Acceso denegado. Se requiere un token JWT válido.")
+                .message(message)
                 .timestamp(LocalDateTime.now())
                 .build();
 

@@ -1,9 +1,9 @@
 -- Archivo de datos semilla iniciales para Reactivando (Compatibilidad ANSI SQL ISO)
 
 INSERT INTO usuarios (id, nombre, apellido, correo, password, telefono, rol, estado, fecha_registro) VALUES 
-(1, 'Administrador', 'Sistema', 'admin@reactivando.com', '$2a$10$8.UnVuG9HHgffUDAlk8qfOuVGkqRzgVymGe07xd00DMxs.AQubh4a', '3001234567', 'ADMIN', true, '2026-01-01 10:00:00'),
-(2, 'Empresa Tech', 'S.A.S', 'empresa@tech.com', '$2a$10$8.UnVuG9HHgffUDAlk8qfOuVGkqRzgVymGe07xd00DMxs.AQubh4a', '3109876543', 'EMPRESA', true, '2026-01-01 10:00:00'),
-(3, 'Juan', 'Pérez', 'candidato@correo.com', '$2a$10$8.UnVuG9HHgffUDAlk8qfOuVGkqRzgVymGe07xd00DMxs.AQubh4a', '3205551234', 'CANDIDATO', true, '2026-01-01 10:00:00');
+(1, 'Administrador', 'Sistema', 'admin@reactivando.com', '$2a$10$e846U.xJm3WkR9xW7L2Z.eC3JdGf.gYmQ6hY3KzX/9p4yX0f7uF4S', '3001234567', 'ADMIN', true, '2026-01-01 10:00:00'),
+(2, 'Empresa Tech', 'S.A.S', 'empresa@tech.com', '$2a$10$e846U.xJm3WkR9xW7L2Z.eC3JdGf.gYmQ6hY3KzX/9p4yX0f7uF4S', '3109876543', 'EMPRESA', true, '2026-01-01 10:00:00'),
+(3, 'Juan', 'Pérez', 'candidato@correo.com', '$2a$10$e846U.xJm3WkR9xW7L2Z.eC3JdGf.gYmQ6hY3KzX/9p4yX0f7uF4S', '3205551234', 'CANDIDATO', true, '2026-01-01 10:00:00');
 
 INSERT INTO empresas (id, usuario_id, nombre_empresa, nit, descripcion, direccion, ciudad, telefono, correo_corporativo, numero_empleados, sitio_web, latitud, longitud, fecha_registro, estado) VALUES 
 (1, 2, 'Tech Solutions Colombia', 'NIT-900123456-1', 'Empresa líder en desarrollo de software e innovación tecnológica', 'Calle 100 #15-20', 'Bogotá', '3109876543', 'contacto@techsolutions.co', 50, 'https://techsolutions.co', 4.60971, -74.08175, '2026-01-01 10:00:00', true);
