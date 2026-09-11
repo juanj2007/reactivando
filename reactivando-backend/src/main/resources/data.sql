@@ -1,7 +1,7 @@
 -- Archivo de datos semilla iniciales para Reactivando (Compatibilidad ANSI SQL ISO)
 
 INSERT INTO usuarios (id, nombre, apellido, correo, password, telefono, rol, estado, fecha_registro) VALUES 
-(1, 'Administrador', 'Sistema', 'admin@reactivando.com', '$2a$10$8.UnVuG9HHgffUDAlk8qfOuVGkqRzgVymGe07xd00DMxs.AQubh4a', '3001234567', 'ADMINISTRADOR', true, '2026-01-01 10:00:00'),
+(1, 'Administrador', 'Sistema', 'admin@reactivando.com', '$2a$10$8.UnVuG9HHgffUDAlk8qfOuVGkqRzgVymGe07xd00DMxs.AQubh4a', '3001234567', 'ADMIN', true, '2026-01-01 10:00:00'),
 (2, 'Empresa Tech', 'S.A.S', 'empresa@tech.com', '$2a$10$8.UnVuG9HHgffUDAlk8qfOuVGkqRzgVymGe07xd00DMxs.AQubh4a', '3109876543', 'EMPRESA', true, '2026-01-01 10:00:00'),
 (3, 'Juan', 'Pérez', 'candidato@correo.com', '$2a$10$8.UnVuG9HHgffUDAlk8qfOuVGkqRzgVymGe07xd00DMxs.AQubh4a', '3205551234', 'CANDIDATO', true, '2026-01-01 10:00:00');
 
