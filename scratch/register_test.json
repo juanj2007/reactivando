@@ -1,0 +1,8 @@
+{
+  "nombre": "Prueba",
+  "apellido": "Empresa",
+  "correo": "testempresa@tech.com",
+  "password": "password123",
+  "telefono": "3001234567",
+  "rol": "EMPRESA"
+}
