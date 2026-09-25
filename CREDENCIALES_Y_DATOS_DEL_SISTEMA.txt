@@ -1,0 +1,126 @@
+===============================================================================
+  REACTIVANDO EL FUTURO — DATOS DE ACCESO, CREDENCIALES Y TECNOLOGÍAS
+===============================================================================
+Fecha de Generación: Septiembre 2026
+Proyecto: Plataforma Web de Intermediación Laboral
+Tecnologías Principales: Java 21 (Spring Boot 3) + React 18 (Vite) + MySQL 8.0
+
+===============================================================================
+1. CREDENCIALES DE ACCESO AL SISTEMA (USUARIOS DE PRUEBA)
+===============================================================================
+
+[ ROL: ADMINISTRADOR ]
+- Correo Electrónico : admin@reactivando.com
+- Contraseña         : admin123
+- Rol Asignado       : ADMIN
+- Acceso a Dashboard : http://localhost:5173/admin/dashboard
+- Permisos          : Control total de usuarios (activación/bloqueo), 
+                       bitácora de auditoría SQL y métricas globales.
+
+[ ROL: EMPRESA 1 ]
+- Nombre Empresa     : Tech Solutions S.A.S.
+- NIT                : 900123456-1
+- Correo Electrónico : empresa@tech.com
+- Contraseña         : empresa123
+- Rol Asignado       : EMPRESA
+- Acceso a Dashboard : http://localhost:5173/empresa/dashboard
+- Funcionalidades    : Geolocalización GPS Google Maps, publicación y pausa 
+                       de vacantes, previsualización de Hojas de Vida (PDF).
+
+[ ROL: EMPRESA 2 ]
+- Nombre Empresa     : Constructora del Norte S.A.
+- NIT                : 900987654-2
+- Correo Electrónico : contacto@constructora.com
+- Contraseña         : empresa123
+- Rol Asignado       : EMPRESA
+
+[ ROL: CANDIDATO 1 ]
+- Nombre             : Carlos Andrés Pérez
+- Correo Electrónico : candidato@correo.com
+- Contraseña         : candidato123
+- Rol Asignado       : CANDIDATO
+- Acceso a Dashboard : http://localhost:5173/candidato/dashboard
+- Funcionalidades    : Perfil profesional, Hoja de Vida PDF, Motor de 
+                       Recomendaciones por %, postulaciones y favoritos.
+
+[ ROL: CANDIDATO 2 ]
+- Nombre             : María Fernanda Rodríguez
+- Correo Electrónico : maria.rodriguez@email.com
+- Contraseña         : candidato123
+- Rol Asignado       : CANDIDATO
+
+===============================================================================
+2. CREDENCIALES Y CONFIGURACIÓN DE BASE DE DATOS & SEGURIDAD
+===============================================================================
+
+[ CONEXIÓN BASE DE DATOS ]
+- Motor             : MySQL Server 8.0 / MariaDB
+- Esquema Relacional: reactivando (Normalizado en 3FN)
+- URL JDBC          : jdbc:mysql://localhost:3306/reactivando?useSSL=false&serverTimezone=UTC
+- Usuario DB Default: root
+- Contraseña DB     : root (o vacía según instalación local)
+- Archivo SQL       : database.sql (ubicado en la raíz del proyecto)
+
+[ SEGURIDAD JWT ]
+- Encriptación Clave: BCrypt Password Encoder
+- Autenticación     : Stateless JSON Web Token (JWT) con HMAC-SHA256
+- Almacenamiento    : LocalStorage del Navegador Web
+- Secret Key (JWT)  : 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+
+===============================================================================
+3. MAPA DE TECNOLOGÍAS Y LIBRERÍAS UTILIZADAS
+===============================================================================
+
+[ BACKEND (Java Spring Boot) ]
+- Lenguaje / Runtime: Java 21 LTS (compatible con Java 17)
+- Framework Backend : Spring Boot 3.2.5
+- Seguridad         : Spring Security 6.x
+- Firma Tokens JWT  : io.jsonwebtoken (JJWT 0.11.5 / 0.12.5)
+- Persistencia ORM  : Spring Data JPA + Hibernate 6
+- Conector MySQL    : com.mysql:mysql-connector-j
+- Pruebas Unitarias : JUnit 5 + Mockito + Spring Security Test
+- Documentación API : OpenAPI 3.0 / Swagger UI (springdoc-openapi-starter-webmvc-ui 2.5.0)
+
+[ FRONTEND (React SPA Client) ]
+- Librería Principal: React 18.2.0
+- Empaquetador / Server: Vite 5.4.x
+- Enrutador         : React Router DOM 6.x
+- Cliente HTTP      : Axios 1.6.x (con interceptores automáticos de Bearer Token)
+- Iconografía       : Lucide React (lucide-react 0.474.0)
+- Mapas e Integración: Google Maps JavaScript API (@react-google-maps/api)
+- Estilos           : Tailwind CSS 3 / CSS3 Modules Responsive
+
+===============================================================================
+4. DATOS INTERESANTES Y REGLAS DE NEGOCIO CLAVE
+===============================================================================
+
+1. MOTOR DE RECOMENDACIONES DE VACANTES PONDERADO:
+   El algoritmo inteligente evalúa la compatibilidad Candidato - Vacante mediante:
+   - Coincidencia de Ciudad    : 25% del total
+   - Nivel de Estudio         : 25% del total
+   - Ocupación / Área          : 20% del total
+   - Coincidencia Habilidades : 30% del total
+
+2. CONTROL DE POSTULACIONES DUPLICADAS:
+   Un candidato NO puede postularse más de una vez a la misma vacante. 
+   La regla se valida tanto a nivel de API REST backend como en restricción 
+   SQL de unicidad (candidato_id, vacante_id).
+
+3. GEOLOCALIZACIÓN INTERACTIVA DE EMPRESAS:
+   Las empresas pueden arrastrar un marcador en Google Maps para guardar 
+   sus coordenadas exactas de Latitud y Longitud en la base de datos.
+
+4. TRAZABILIDAD Y AUDITORÍA DE SEGURIDAD:
+   Existe una tabla SQL `auditoria` que registra automáticamente la IP del 
+   cliente, el usuario, la fecha/hora exacta y la acción ejecutada en operaciones 
+   sensibles (logins, publicaciones, cambios de estado).
+
+===============================================================================
+5. PUERTOS Y ENLACES LOCALES DE EJECUCIÓN
+===============================================================================
+- Aplicación Web Frontend : http://localhost:5173
+- API REST Backend Server : http://localhost:8080
+- Documentación Swagger   : http://localhost:8080/swagger-ui/index.html
+- Base de Datos MySQL     : localhost:3306 (Database: reactivando)
+
+===============================================================================
